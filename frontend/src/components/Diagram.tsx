@@ -64,7 +64,31 @@ function Diagram() {
                 color: "#89c3eb"    // カスタムプロパティ
             }
         }
-    ] 
+    ]
+
+    const styles = [
+        {
+            selector: "node",   // すべてのノードに適用
+            style: {
+                width: "80px",
+                height: "80px",
+                label: "data(label)",   // このようにして data にアクセスすることで label を指示する
+                "border-width": 2,
+                "text-valign": "center" // ノードの縦方向に中心に
+            } as const      // ts の場合は as const を付けないとエラーになる場合がある
+        },
+        {
+            selector: "edge",
+            style: {
+                width: 2,
+                label: "data(label)",
+                "line-color": "data(color)",    // カスタムプロパティにもアクセスできる => カスタムプロパティで色指定
+                "text-background-color": "#e8ecef",
+                "text-background-shape": "rectangle",
+                "text-background-opacity": 1,       // 初期値で0に設定されているので 1 にしないとラベルのテキストボックスは見えない
+            } as const 
+        }
+    ]
 
 
     const cyElemRef = useRef<HTMLDivElement>(null);     // グラフ(canvas)が描画される領域
@@ -76,6 +100,7 @@ function Diagram() {
         const cyInstance = cytoscape({                          
             container: cyElemRef.current,                   // 描画領域を渡す。js では `getElementById()` 等を使う
             elements: elems,
+            style: styles,
         })
 
         // creanup 処理
