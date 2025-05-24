@@ -1,0 +1,39 @@
+1. ディレクトリ構造
+    CodeArchipelago/
+├── frontend/                  # 🟢 Reactアプリ（人物入力・相関図描画 etc.）
+│   ├── src/
+│   │   ├── components/        # 👤 FE-1：人物入力UI、相関図表示UI
+│   │   ├── pages/             # 👤 FE-2：ページ構成、デモ画面遷移
+│   │   ├── utils/             # 👤 FE-2：fetchヘルパー、画像存在確認
+│   │   └── App.tsx            # 👤 FE-1：ルート構成＋状態管理
+│   ├── public/
+│   ├── package.json
+│   └── .env                   # 🧑 共通：API URL設定（バックエンド連携）
+
+├── backend/                   # 🔵 FastAPI（人物・関係性・画像管理）
+│   ├── main.py                # 👤 BE-3：FastAPIエントリーポイント
+│   ├── routes/
+│   │   ├── characters.py      # 👤 BE-3：POST /characters
+│   │   ├── relations.py       # 👤 BE-1：POST /relations/modify（GPT）
+│   │   ├── graph.py           # 👤 BE-3：GET /graph（人物+関係性構造）
+│   │   └── image.py           # 👤 BE-2：POST /generate-image（DALL·E）※実際は手動生成を優先
+│   ├── services/
+│   │   ├── gpt.py             # 👤 BE-1：GPTプロンプト送信と整形出力
+│   │   └── image_gen.py       # 👤 BE-2：画像生成用コード（今は温存）
+│   ├── data/
+│   │   ├── characters.json    # 👤 BE-3：人物 + 画像パスも記録（例: "image": "/portraits/吹あゆみ.png"）
+│   │   └── relations.json     # 👤 BE-1：関係性構造
+│   ├── portraits/             # 👤 BE-2：あらかじめ生成したキャラ画像（PNG）
+│   │   ├── 吹あゆみ.png       # 📸 あらかじめ保存しておいたやつ！
+│   │   ├── 杉下耕助.png
+│   │   └── 岩野豪造.png
+│   └── requirements.txt       # 👤 BE-3：FastAPI / openai 等の依存
+
+├── streamlit_backup/          # 🛟 Streamlit緊急用（BE-3がキープ）
+│   ├── app.py
+│   └── graph.html
+
+└── docs/                      # 📝 ドキュメント類
+    ├── api.md                 # 👤 BE-3：API仕様（エンドポイント、レス例）
+    ├── prompts.md             # 👤 BE-1：GPT用プロンプト一覧と改善履歴
+    └── figma-links.md         # 👤 FE-2：Figma URL、画面構成
