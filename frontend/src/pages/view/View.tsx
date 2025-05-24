@@ -1,7 +1,6 @@
-import React from "react"
 import Header from "../../components/Header"
-import { useNavigate } from "react-router-dom";
-import CharacterRegistrationForm from "../../components/CharacterRegistrationForm
+import CharacterRegistrationForm from "../../components/CharacterRegistrationForm"
+import Diagram from "../../components/diagram"
 
 export const View = () => {
     return (
@@ -10,6 +9,7 @@ export const View = () => {
           <div>
               <h1>VIEW</h1>
               <CharacterRegistrationForm />
+              <Diagram />
           </div>
         </>
     )
