@@ -1,0 +1,19 @@
+# Python キャッシュ・バイナリ
+__pycache__/
+*.py[cod]
+
+# 仮想環境
+.venv/
+
+# OSゴミファイル
+.DS_Store
+
+# IDE設定
+.vscode/
+.idea/
+
+# その他バックアップやログ
+*.log
+
+# 機密ファイル
+.env
