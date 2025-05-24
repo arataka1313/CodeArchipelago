@@ -1,4 +1,5 @@
 import CharacterRegistrationForm from "../../components/CharacterRegistrationForm"
+import Diagram from "../../components/diagram"
 
 export const View = () => {
     return (
