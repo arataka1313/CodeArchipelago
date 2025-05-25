@@ -19,7 +19,7 @@ def generate_relations_from_characters(characters: dict):
     text = res.choices[0].message.content.strip()
     relations = []
     for line in text.split("\n"):
-        line = re.sub(r"^\d+\.\s*", "", line)  # 「1. 伊東沙耶香」の「1. 」を削除
+        line = re.sub(r"^\d+\.\s*", "", line)
         try:
             a, b, rel = map(str.strip, line.split(","))
             relations.append({"from": a, "to": b, "type": rel})
