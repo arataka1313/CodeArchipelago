@@ -1,5 +1,5 @@
 import CharacterRegistrationForm from "../../components/CharacterRegistrationForm"
-import Diagram from "../../components/diagram"
+import Diagram from "../../components/Diagram"
 
 export const View = () => {
     return (
@@ -27,6 +27,7 @@ export const View = () => {
             <main className="flex-1 p-6 bg-gray-100">
               <div className="w-full h-96 bg-white rounded-lg shadow-md flex items-center justify-center text-gray-400 text-lg font-medium">
                 <p>相関図をここに表示</p>
+                <Diagram />
               </div>
             </main>
           </div>
