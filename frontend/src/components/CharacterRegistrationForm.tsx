@@ -4,14 +4,33 @@ const CharacterRegistrationForm = () => {
   const [name, setName] = useState('');
   const [attribute, setAttribute] = useState('');
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        if (!name || !attribute) {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+      if (!name || !attribute) {
         alert('名前と属性を入力してください。');
         return;
+      }
+
+      try {
+        const res = await fetch('http://localhost:8000/characters/add', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ name, attribute }),
+        });
+
+        if (!res.ok) {
+          throw new Error('サーバーエラー');
         }
+        
         setName('');
         setAttribute('');
+      } catch (error) {
+          console.error('送信エラー:', error);
+          alert('送信に失敗しました');
+      }
     };
 
   return (
