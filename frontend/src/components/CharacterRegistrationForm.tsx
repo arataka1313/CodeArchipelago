@@ -4,7 +4,7 @@ const CharacterRegistrationForm = () => {
   const [name, setName] = useState('');
   const [attribute, setAttribute] = useState('');
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!name || !attribute) {
         alert('名前と属性を入力してください。');
