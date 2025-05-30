@@ -16,4 +16,4 @@ __pycache__/
 *.log
 
 # 機密ファイル
-.env
+.env.env
